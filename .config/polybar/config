@@ -26,7 +26,7 @@ module-margin-right = 2
 font-0 = SauceCodePro Nerd Font:size=10;1
 modules-left = i3
 modules-center = xbacklight date alsa
-modules-right = wlan cpu memory battery temperature powermenu
+modules-right = wlan eth cpu memory battery temperature powermenu
 tray-position = right
 
 [module/i3]
@@ -58,15 +58,15 @@ label-separator = |
 
 [module/xbacklight]
 type = internal/xbacklight
-format = <label> <bar>
-label =
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-fill = ─
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-foreground = ${colors.foreground-alt}
+format = <ramp> <label>
+label = %percentage%
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-3 =
+ramp-4 =
+ramp-5 =
+ramp-6 =
 
 [module/cpu]
 type = internal/cpu
@@ -90,7 +90,9 @@ interface = wlp1s0
 interval = 1
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%:  %downspeed% | 祝 %upspeed%
+extra-label = extra
+; TODO: make module clickable to change format on click
+label-connected =%{A1:cmd_goes_here:}%{A} %essid%:  %downspeed% | 祝 %upspeed%
 
 [module/eth]
 type = internal/network
@@ -129,77 +131,65 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
-
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
+format-full-prefix = 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 =
+ramp-capacity-1 =
+ramp-capacity-2 =
+ramp-capacity-3 =
+ramp-capacity-4 =
+ramp-capacity-5 =
+ramp-capacity-6 =
+ramp-capacity-7 =
+ramp-capacity-8 =
 ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 =
+animation-charging-1 =
+animation-charging-2 =
+animation-charging-3 =
+animation-charging-4 =
+animation-charging-5 =
+animation-charging-6 =
 animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+animation-charging-framerate = 300 
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
 format = <ramp> <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
-
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 =ﰕ
+ramp-1 =
+ramp-2 =
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
-
 format-spacing = 1
-
 label-open =襤
 label-open-foreground = ${colors.secondary}
 label-close =
 label-close-foreground = ${colors.secondary}
 label-separator =|
 label-separator-foreground = ${colors.foreground-alt}
-
 menu-0-0 =勒
 menu-0-0-exec = menu-open-1
 menu-0-1 =襤
 menu-0-1-exec = menu-open-2
-
 menu-1-0 =
 menu-1-0-exec = menu-open-0
 menu-1-1 =勒
 menu-1-1-exec = sudo reboot
-
 menu-2-0 =襤
 menu-2-0-exec = sudo poweroff
 menu-2-1 =
