@@ -7,4 +7,7 @@ This document helps me keep track of the steps i took in order to configure my m
 ## polybar
 * install [polybar](https://github.com/polybar/polybar.git)
 ## fonts
-* install [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts.git) by moving the .ttf files in /usr/share/fonts/TTF 
+install [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts.git) by moving the .ttf files in 
+```bash
+/usr/share/fonts/TTF 
+```
