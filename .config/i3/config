@@ -1,0 +1,154 @@
+#vim:set ft=i3config
+# add this to vimrc
+#aug i3config_ft_detection
+#au!
+#au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
+#aug end
+#--- Autostart Application ---#
+exec_always --no-startup-id /home/tobiabocchi/.config/polybar/launch.sh
+exec --no-startup-id volumeicon
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+exec --no-startup-id start_conky_maia
+exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+
+#--- Basic Definitions ---#
+smart_gaps on
+smart_borders on
+set $mod Mod4
+default_border none
+gaps inner 5
+gaps outer 5
+font pango:SauceCodePro Nerd Font
+
+#--- Basic Bindings ---#
+bindsym $mod+Return 		exec terminal
+bindsym XF86Search 		exec firefox
+bindsym Print 			exec --no-startup-id i3-scrot
+bindsym $mod+Print 		--release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print	--release exec --no-startup-id i3-scrot -s
+bindsym $mod+Home		workspace $ws1
+bindsym $mod+Shift+Home		move container to workspace $ws1
+bindsym $mod+End workspace	$ws8
+bindsym $mod+Shift+End		move container to workspace $ws8
+bindsym $mod+space		focus mode_toggle
+bindsym $mod+Shift+minus	move scratchpad
+bindsym $mod+minus		scratchpad show
+bindsym $mod+Tab		workspace next
+bindsym $mod+Shift+Tab		workspace prev
+
+#--- Digits Bindings ---#
+bindsym $mod+1		workspace $ws1
+bindsym $mod+Shift+1	move container to workspace $ws1
+
+bindsym $mod+2 		workspace $ws2
+bindsym $mod+Shift+2 	move container to workspace $ws2
+
+bindsym $mod+3 		workspace $ws3
+bindsym $mod+Shift+3 	move container to workspace $ws3
+
+bindsym $mod+4 		workspace $ws4
+bindsym $mod+Shift+4 	move container to workspace $ws4
+
+bindsym $mod+5 		workspace $ws5
+bindsym $mod+Shift+5 	move container to workspace $ws5
+
+bindsym $mod+6 		workspace $ws6
+bindsym $mod+Shift+6 	move container to workspace $ws6
+
+bindsym $mod+7 		workspace $ws7
+bindsym $mod+Shift+7 	move container to workspace $ws7
+
+bindsym $mod+8 		workspace $ws8
+bindsym $mod+Shift+8 	move container to workspace $ws8
+
+bindsym $mod+9		exec --no-startup-id blurlock
+
+#--- Letter Key Bindings ---#
+bindsym $mod+q			kill
+
+bindsym $mod+e			layout toggle split
+bindsym $mod+Shift+e		exec "i3-nagbar -t warning -m 'Exit?' -b 'Logout' 'i3-msg exit'"
+
+bindsym $mod+Shift+r		restart
+
+bindsym $mod+Shift+u		resize shrink width 2 px or 2 ppt
+
+bindsym $mod+Shift+i 		resize grow height 2 px or 2 ppt
+bindsym $mod+Ctrl+i		gaps inner current plus 5
+bindsym $mod+Ctrl+Shift+i	gaps inner current minus 5
+
+
+bindsym $mod+o			split h;exec notify-send 'tile horizontally'
+bindsym $mod+Shift+o 		resize shrink height 2 px or 2 ppt
+bindsym $mod+Ctrl+o		gaps outer current plus 5
+bindsym $mod+Ctrl+Shift+o	gaps outer current minus 5
+
+bindsym $mod+Shift+p 		resize grow width 2 px or 2 ppt
+
+bindsym $mod+Shift+s		sticky toggle
+
+bindsym $mod+d			exec --no-startup-id dmenu_recency
+
+bindsym $mod+f			fullscreen toggle
+bindsym $mod+Shift+f		floating toggle
+
+bindsym $mod+h			focus left
+bindsym $mod+Shift+h		move left
+
+bindsym $mod+j			focus down
+bindsym $mod+Shift+j		move down
+
+bindsym $mod+k			focus up
+bindsym $mod+Shift+k		move up
+
+bindsym $mod+l			focus right
+bindsym $mod+Shift+l		move right
+
+bindsym $mod+z			exec --no-startup-id morc_menu
+
+bindsym $mod+Shift+c		reload
+
+bindsym $mod+v			split v;exec notify-send 'tile vertically'
+
+bindsym $mod+m			bar mode toggle
+
+#--- Workspaces ---#
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+
+#bar {
+#	i3bar_command i3bar
+#	status_command i3status
+#	position bottom
+#
+#	bindsym button4 nop
+#	bindsym button5 nop
+#	strip_workspace_numbers yes
+#
+#    colors {
+#        background #222D31
+#        statusline #F9FAF9
+#        separator  #454947
+#
+##			   border  backgr. text
+#        focused_workspace  #F9FAF9 #16a085 #292F34
+#        active_workspace   #595B5B #353836 #FDF6E3
+#        inactive_workspace #595B5B #222D31 #EEE8D5
+#        binding_mode       #16a085 #2C2C2C #F9FAF9
+#        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#    }
+#}
