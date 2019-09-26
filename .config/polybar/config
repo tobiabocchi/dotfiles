@@ -183,17 +183,11 @@ label-close-foreground = ${colors.secondary}
 label-separator =|
 label-separator-foreground = ${colors.foreground-alt}
 menu-0-0 =勒
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = reboot
 menu-0-1 =襤
-menu-0-1-exec = menu-open-2
-menu-1-0 =
-menu-1-0-exec = menu-open-0
-menu-1-1 =勒
-menu-1-1-exec = sudo reboot
-menu-2-0 =襤
-menu-2-0-exec = sudo poweroff
-menu-2-1 =
-menu-2-1-exec = menu-open-0
+menu-0-1-exec = poweroff
+menu-0-2 =
+menu-0-2-exec = i3-msg exit
 
 [settings]
 screenchange-reload = true
