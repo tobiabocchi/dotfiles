@@ -38,6 +38,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'stevearc/vim-arduino'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
