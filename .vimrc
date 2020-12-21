@@ -6,7 +6,6 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-" set nowrap
 set smartcase
 set noswapfile
 set nobackup
@@ -14,7 +13,6 @@ set undofile
 set incsearch
 set nohlsearch
 set hidden
-set termguicolors
 set scrolloff=8
 set noshowmode
 set relativenumber
@@ -42,6 +40,7 @@ Plug 'stevearc/vim-arduino'
 call plug#end()
 
 colorscheme gruvbox
+set background=dark
 
 let mapleader=" "
 
