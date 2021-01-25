@@ -7,14 +7,14 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set number
+set nu
 set smartcase
 set noswapfile
 set nobackup
 set undofile
 set incsearch
 set nohlsearch
-" set hidden
-" set termguicolors
+set hidden
 set scrolloff=8
 set relativenumber
 set visualbell
@@ -52,6 +52,7 @@ call plug#end()
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 colorscheme gruvbox
+set background=dark
 
 let mapleader=" "
 
