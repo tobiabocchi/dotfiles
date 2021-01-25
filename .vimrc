@@ -1,30 +1,36 @@
 syntax on
 
+set nocompatible
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
-set nu
-" set nowrap
+set number
 set smartcase
 set noswapfile
 set nobackup
 set undofile
 set incsearch
 set nohlsearch
-set hidden
-set termguicolors
+" set hidden
+" set termguicolors
 set scrolloff=8
-set noshowmode
 set relativenumber
 set visualbell
+set path+=**
+set wildmenu
+
+command! MakeTags !ctags -R
 
 if empty(glob($HOME . '/.vim/undodir'))
     call mkdir($HOME . '/.vim/undodir', 'p')
 endif
 
 set undodir=~/.vim/undodir
+
+" Delete empty space from the end of lines on every save
+autocmd BufWritePre * :%s/\s\+$//e
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -35,19 +41,29 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'stevearc/vim-arduino'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
+Plug 'luochen1990/rainbow'
 
 call plug#end()
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 colorscheme gruvbox
 
 let mapleader=" "
+
+" Easier movement between split windows CTRL + {h, j, k, l}
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Save shortcut
+nnoremap <silent><leader>w :w<CR>
+nnoremap <silent><leader>q :q<CR>
 
 " Disable Arrow keys in Normal mode
 map <up> <nop>
