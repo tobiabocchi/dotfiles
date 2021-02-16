@@ -17,7 +17,6 @@ set nohlsearch
 set hidden
 set scrolloff=8
 set relativenumber
-set visualbell
 set path+=**
 set wildmenu
 
@@ -41,8 +40,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'gruvbox-community/gruvbox'
 Plug 'stevearc/vim-arduino'
 Plug 'tpope/vim-fugitive'
 Plug 'luochen1990/rainbow'

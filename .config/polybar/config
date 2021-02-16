@@ -1,33 +1,51 @@
-; vim :set ft=dosini
+;=============================================================;
+;                                                             ;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗    ;
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗   ;
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝   ;
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗   ;
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║   ;
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ;
+;                                                             ;
+;=============================================================;
+
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #ff0000
-alert = #bd2c40
+background = #282828
+background-alt = #3c3836
+foreground = #fbf1c7
+foreground-alt = #ebdbb2
+alert = #cc241d
+; gruvbox colors
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b16286
+aqua = #689d6a
+orange = #d65d0e
+
 
 [bar/top]
-monitor = eDP1
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 radius = 6.0
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
+line-size = 3 ; Coloured line below modules
 border-size = 4
-border-color = #00000000
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
-font-0 = SauceCodePro Nerd Font:size=10;1
+; leave space for systray
+padding-right = 1
+module-margin = 1
+font-0 = UbuntuMono Nerd Font:size=12
 modules-left = i3
-modules-center = xbacklight date alsa
+modules-center = backlight date alsa
 modules-right = wlan eth cpu memory battery temperature powermenu
 tray-position = right
+; workaround to get radius working on systray
+;tray-detached = true
+;tray-offset-x = -6
+;tray-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -36,11 +54,11 @@ index-sort = true
 wrapping-scroll = false
 label-mode-padding = 2
 label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.background}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.green}
 label-focused-padding = 2
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
@@ -56,8 +74,9 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 label-separator = |
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 format = <ramp> <label>
 label = %percentage%
 ramp-0 =
@@ -72,16 +91,16 @@ ramp-6 =
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.purple}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix ="﬙ "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.yellow}
 label = %percentage_used%%
 
 [module/wlan]
@@ -89,10 +108,10 @@ type = internal/network
 interface = wlp1s0
 interval = 1
 format-connected = <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.blue}
 extra-label = extra
 ; TODO: make module clickable to change format on click
-label-connected =%{A1:cmd_goes_here:}%{A} %essid%:  %downspeed% | 祝 %upspeed%
+label-connected =%{A1:cmd_goes_here:} %{A} %essid%:  %downspeed% | 祝 %upspeed%
 
 [module/eth]
 type = internal/network
@@ -100,19 +119,18 @@ interface = enp2s0
 interval = 1
 format-connected = <label-connected>
 format-connected-underline = #55aa55
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%:  %downspeed% | 祝 %upspeed%
- 
+
 [module/date]
 type = internal/date
 interval = 1
-date =
 date-alt =%A %b %d
 time =%H:%M
 time-alt = %H:%M:%S
-format-prefix =" " 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-prefix =" "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.red}
 label = %date% %time%
 
 [module/alsa]
@@ -122,7 +140,7 @@ label-volume = %percentage%
 ramp-volume-0 =奄
 ramp-volume-1 =奔
 ramp-volume-2 =墳
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.foreground}
 format-muted-foreground = ${colors.foreground-alt}
 label-muted =ﱝ %percentage%
 
@@ -132,11 +150,11 @@ battery = BAT0
 adapter = AC
 full-at = 98
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.aqua}
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-format-full-prefix = 
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix =
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 =
 ramp-capacity-1 =
@@ -147,7 +165,7 @@ ramp-capacity-5 =
 ramp-capacity-6 =
 ramp-capacity-7 =
 ramp-capacity-8 =
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 animation-charging-0 =
 animation-charging-1 =
 animation-charging-2 =
@@ -155,39 +173,39 @@ animation-charging-3 =
 animation-charging-4 =
 animation-charging-5 =
 animation-charging-6 =
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 300 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 300
 
 [module/temperature]
 type = internal/temperature
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.orange}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 ramp-0 =ﰕ
 ramp-1 =
 ramp-2 =
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground}
 
 [module/powermenu]
 type = custom/menu
 expand-right = true
 format-spacing = 1
 label-open =襤
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.red}
 label-close =
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.red}
 label-separator =|
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
 menu-0-0 =勒
 menu-0-0-exec = reboot
 menu-0-1 =襤
 menu-0-1-exec = poweroff
 menu-0-2 =
-menu-0-2-exec = i3-msg exit
+menu-0-2-exec = i3-msg exit; exit
 
 [settings]
 screenchange-reload = true
@@ -195,3 +213,5 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+; vim:ft=dosini
