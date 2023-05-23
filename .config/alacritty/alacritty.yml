@@ -22,5 +22,8 @@ import:
 selection:
   save_to_clipboard: true
 
+live_config_reload: true
+
 key_bindings:
   - { key: Key6, mods: Control, chars: "\x1e" } # fix C-6
+  - { key: Space, mods: Control, chars: "\x00" } # fix C-6
