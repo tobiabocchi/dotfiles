@@ -24,7 +24,7 @@ vim.keymap.set("n", "<c-l>", "<c-w>l")
 
 -- Misc mappings
 -- Open file explorer (netrw)
-vim.keymap.set("n", "<leader>fx", "<cmd>30Lexplore<CR>")
+vim.keymap.set("n", "<leader>sx", "<cmd>30Lexplore<CR>")
 -- Save file
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 -- Quit file, this is used for diagnostics
