@@ -26,6 +26,7 @@ vim.opt.tabstop     = 4 -- # of " " for one <Tab>
 
 -- Ricing
 vim.opt.cursorline     = true -- highlight current line
+vim.opt.cursorcolumn   = true -- highlight current column
 -- vim.opt.guicursor      = ""
 vim.opt.list           = true -- tab as >, trailingspace as -
 vim.opt.number         = true -- show line numbers
