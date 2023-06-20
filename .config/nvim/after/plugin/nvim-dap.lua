@@ -66,6 +66,6 @@ dap.configurations.cpp = {
 				ignoreFailures = false,
 			},
 		},
-		stopAtEntry = true,
+		stopAtEntry = false,
 	},
 }
