@@ -207,6 +207,10 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+lspconfig.grammarly.setup({
+	filetypes = { "markdown", "tex", "text" },
+})
+
 ------------------------------
 --        5. null-ls        --
 ------------------------------
