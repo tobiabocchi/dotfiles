@@ -14,5 +14,5 @@ To install the dotfiles:
 
 ```sh
 git clone https://github.com/tobiabocchi/dotfiles
-stow --dir=dotfiles --target=$HOME
+stow dotfiles --target=$HOME
 ```
