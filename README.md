@@ -9,3 +9,10 @@
   <source media="(prefers-color-scheme: light)" srcset="img/cautionary.png">
   <img alt="Work it harder, make it better. Do it faster, makes us stronger." src="img/cautionary.png">
 </picture>
+
+To install the dotfiles:
+
+```sh
+git clone https://github.com/tobiabocchi/dotfiles
+stow --dir=dotfiles --target=$HOME
+```
