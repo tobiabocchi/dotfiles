@@ -1,0 +1,36 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 21.0
+
+[font.bold]
+family = "UbuntuMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "UbuntuMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
+[[keyboard.bindings]]
+chars = "\u001E"
+key = "Key6"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "Space"
+mods = "Control"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "none"
+opacity = 0.9
