@@ -4,8 +4,6 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-cmdline",
-		-- TODO: remove this
-		-- "hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-path",
 		"micangl/cmp-vimtex",
@@ -22,22 +20,6 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
 		local ls = require("luasnip")
-		-- Set luasnip's keybindings
-		vim.keymap.set({ "i" }, "<C-K>", function()
-			if ls.jumpable(-1) then
-				ls.jump(-1)
-			end
-		end, { silent = true, desc = "Jump backward" })
-		vim.keymap.set({ "i", "s" }, "<C-J>", function()
-			if ls.expand_or_jumpable() then
-				ls.expand_or_jump()
-			end
-		end, { silent = true, desc = "Jump forward" })
-		vim.keymap.set({ "i", "s" }, "<C-l>", function()
-			if ls.choice_active() then
-				ls.change_choice(1)
-			end
-		end, { silent = true, desc = "Change choice" })
 		-- Configuer cmp
 		cmp.setup({
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
@@ -45,16 +27,38 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+			completion = { completeopt = "menu,menuone,noinsert" },
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
 			mapping = cmp.mapping.preset.insert({
+				-- Select the [n]ext item
+				["<C-n>"] = cmp.mapping.select_next_item(),
+				-- Select the [p]revious item
+				["<C-p>"] = cmp.mapping.select_prev_item(),
+				-- Accept ([y]es) the completion.
+				--  This will auto-import if your LSP supports it.
+				--  This will expand snippets if the LSP sent a snippet.
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+				-- Manually trigger a completion from nvim-cmp.
+				--  Generally you don't need this, because nvim-cmp will display
+				--  completions whenever it has completion options available.
+				["<C-Space>"] = cmp.mapping.complete({}),
 				["<C-f>"] = cmp.mapping.scroll_docs(-4),
 				["<C-v>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-l>"] = cmp.mapping(function()
+					if ls.expand_or_locally_jumpable() then
+						ls.expand_or_jump()
+					end
+				end, { "i", "s" }),
+				["<C-h>"] = cmp.mapping(function()
+					if ls.locally_jumpable(-1) then
+						ls.jump(-1)
+					end
+				end, { "i", "s" }),
 			}),
 			experimental = {
 				ghost_text = true,
@@ -98,12 +102,5 @@ return {
 				{ name = "cmdline" },
 			}),
 		})
-		-- TODO: remove this
-		-- Set up lspconfig.
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-		-- require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
-		--	capabilities = capabilities,
-		--})
 	end,
 }

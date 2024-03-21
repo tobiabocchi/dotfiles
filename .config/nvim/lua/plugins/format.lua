@@ -21,7 +21,7 @@ return {
 			html = { "stylua" },
 			javascript = { "standardjs" },
 			lua = { "stylua" },
-			markdown = { "markdownlint" },
+			markdown = { "prettierd" },
 			python = { "isort", "black" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },

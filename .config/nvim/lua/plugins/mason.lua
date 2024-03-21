@@ -23,14 +23,16 @@ return {
 				"markdownlint", -- [L] markdown, also formatter
 				"pylint", -- [L] python
 				"shellcheck", -- [L] shell
+				-- "harper-ls", -- [L] grammar check
 				-- Language servers, check lsp.lua
 				"arduino-language-server", -- [LSP] arduino
 				"bash-language-server", -- [LSP] bash
 				"clangd", -- [LSP] c c++
 				"html-lsp", -- [LSP] html
 				"lua-language-server", -- [LSP] lua
-				"python-lsp-server", -- [LSP] python
+				"pyright", -- [LSP] python
 				"rust-analyzer", -- [LSP] rust
+				"vale-ls", -- [LSP] markdown
 				-- Debuggers
 				"cpptools", -- [DAP] c++
 			},

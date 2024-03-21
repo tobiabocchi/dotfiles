@@ -23,8 +23,10 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "BufWritePost" }, {
 			group = lint_augroup,
 			callback = function()
-				-- TODO: only if file exist
-				lint.try_lint()
+				local filepath = vim.fn.expand("%:p")
+				if vim.fn.filereadable(filepath) ~= 0 then
+					lint.try_lint()
+				end
 			end,
 		})
 	end,
