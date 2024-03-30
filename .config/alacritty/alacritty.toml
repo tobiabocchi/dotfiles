@@ -2,7 +2,7 @@ import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [env]
-TERM = "xterm-256color"
+TERM = "tmux-256color"
 
 [font]
 size = 21.0
