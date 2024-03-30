@@ -56,6 +56,8 @@ vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 -- netrw
 vim.g.netrw_banner = 0
 
+vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/versions/nvim/bin/python3"
+
 -- Delete empty space from the end of lines on every save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { command = "%s/\\s\\+$//e" })
 
