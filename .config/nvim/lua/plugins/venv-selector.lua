@@ -5,6 +5,7 @@ return {
 		-- Your options go here
 		-- name = "venv",
 		-- auto_refresh = false
+		pyenv_path = vim.env.PYENV_ROOT .. "/versions",
 	},
 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 	keys = {
