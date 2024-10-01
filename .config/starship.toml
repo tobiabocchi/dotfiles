@@ -1,0 +1,109 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+
+palette = 'catppuccin_mocha'
+
+[[battery.display]]
+threshold = 10
+discharging_symbol = '󰂃 '
+style = 'bold red'
+
+[[battery.display]]
+threshold = 30
+style = 'bold yellow'
+discharging_symbol = '󰂃 '
+
+[c]
+symbol = " "
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
+
+[cmd_duration]
+min_time = 500
+format = 'underwent [$duration](bold yellow)'
+
+[directory]
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+#symbol = "󰍛 "
+symbol = "󰨦"
+disabled = false
+threshold = 50
+format = '[$symbol${ram_pct}]($style) '
+style = 'bold red'
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Arch = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Kali = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+Pop = " "
+Raspbian = " "
+Ubuntu = " "
+Unknown = " "
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
