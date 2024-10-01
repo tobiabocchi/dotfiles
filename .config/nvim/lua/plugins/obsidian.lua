@@ -44,7 +44,7 @@ return {
 				opts = { buffer = true },
 			},
 		},
-		new_notes_location = "~/syncthing/tobiabocchi/vaults/para/new",
+		new_notes_location = vim.fn.expand("~") .. "/syncthing/tobiabocchi/vaults/para/new",
 
 		-- Optional, customize how note IDs are generated given an optional title.
 		---@param title string|?
