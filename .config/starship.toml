@@ -50,7 +50,7 @@ symbol = " "
 #symbol = "󰍛 "
 symbol = "󰨦"
 disabled = false
-threshold = 50
+threshold = 90
 format = '[$symbol${ram_pct}]($style) '
 style = 'bold red'
 
