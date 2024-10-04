@@ -5,7 +5,7 @@ live_config_reload = true
 TERM = "tmux-256color"
 
 [font]
-size = 21.0
+size = 17
 
 [font.bold]
 family = "UbuntuMono Nerd Font"
