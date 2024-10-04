@@ -15,16 +15,37 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	keys = {
-		{ "<Leader>o", "<cmd>ObsidianQuickSwitch<cr>", desc = "Open [O]bsidian Quick Switch" },
+		{ "<Leader>os", "<cmd>ObsidianSearch<cr>", desc = "[O]bsidian [S]earch" },
+		{ "<Leader>oq", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [Q]uick Switch" },
+		{ "<Leader>on", "<cmd>ObsidianNew<cr>", desc = "[O]bsidian [N]ew note" },
+		{ "<Leader>od", "<cmd>ObsidianToday<cr>", desc = "[O]bsidian [D]aily note" },
+		{ "<Leader>ot", "<cmd>ObsidianTOC<cr>", desc = "[O]bsidian [T]oc" },
+		{ "<Leader>l", "<cmd>ObsidianLinkNew<cr>", desc = "Create new [L]ink with visual selection", mode = "v" },
 	},
 	opts = {
 		workspaces = {
-			{ name = "para", path = "~/syncthing/tobiabocchi/vaults/para" },
+			{
+				name = "para",
+				path = "~/syncthing/tobiabocchi/vaults/para",
+				overrides = {
+					notes_subdir = "new",
+				},
+			},
 		},
 		completion = {
 			-- Set to false to disable completion.
 			nvim_cmp = true,
 			min_chars = 2,
+		},
+		daily_notes = {
+			-- Optional, if you keep daily notes in a separate directory.
+			folder = "dailies",
+			-- Optional, if you want to change the date format for the ID of daily notes.
+			date_format = "%Y-%m-%d",
+			-- Optional, default tags to add to each new daily note created.
+			default_tags = { "daily-notes" },
+			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+			template = "daily.md",
 		},
 		-- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
 		-- way then set 'mappings = {}'.
@@ -45,7 +66,14 @@ return {
 			},
 		},
 		new_notes_location = vim.fn.expand("~") .. "/syncthing/tobiabocchi/vaults/para/new",
-
+		-- Optional, for templates (see below).
+		templates = {
+			folder = "templates",
+			date_format = "%Y-%m-%d",
+			time_format = "%H:%M",
+			-- A map for custom variables, the key should be the variable and the value a function
+			substitutions = {},
+		},
 		-- Optional, customize how note IDs are generated given an optional title.
 		---@param title string|?
 		---@return string
