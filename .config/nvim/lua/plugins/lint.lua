@@ -11,6 +11,7 @@ return {
 			-- look into quick-lint-js
 			markdown = { "markdownlint" },
 			python = { "pylint" },
+			yaml = { "yamllint" },
 		}
 		local pattern = "[^:]+:(%d+):(%d+):([^%.]+%.?)%s%(([%a-]+)%)%s?%(?(%a*)%)?"
 		local groups = { "lnum", "col", "message", "code", "severity" }

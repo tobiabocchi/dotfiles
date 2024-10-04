@@ -23,6 +23,7 @@ return {
 				"markdownlint", -- [L] markdown, also formatter
 				"pylint", -- [L] python
 				"shellcheck", -- [L] shell
+				"yamllint", -- [L] YAML
 				-- "harper-ls", -- [L] grammar check
 				-- Language servers, check lsp.lua
 				"arduino-language-server", -- [LSP] arduino
@@ -33,6 +34,7 @@ return {
 				"pyright", -- [LSP] python
 				"rust-analyzer", -- [LSP] rust
 				"vale-ls", -- [LSP] markdown
+				"yaml-language-server", -- [LSP] YAML
 				-- Debuggers
 				"cpptools", -- [DAP] c++
 			},
