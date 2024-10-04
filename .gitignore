@@ -1,5 +1,2 @@
 .config/nvim/lazy-lock.json
 .config/tmux/plugins/
-.config/zsh/.zcompdump
-.config/zsh/.zsh_history
-.config/github-copilot

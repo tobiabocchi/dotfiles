@@ -1,8 +1,13 @@
 # vim: set ft=sh :
 
+# Create zsh dir for its data
+if [[ ! -d $XDG_DATA_HOME/zsh ]]; then
+  mkdir -p "$XDG_DATA_HOME"/zsh
+fi
+
 # completion
 autoload -U compinit
-compinit
+compinit -d "$XDG_DATA_HOME/zsh/zcompdump"
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")'
@@ -36,9 +41,6 @@ fi
 
 # zsh plugins
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
-if [[ ! -d $XDG_DATA_HOME/zsh ]]; then # create a dir to store plugins
-  mkdir -p "$XDG_DATA_HOME"/zsh
-fi
 for plugin in $plugins; do
   if [[ ! -d $XDG_DATA_HOME/zsh/$plugin ]]; then
     git clone "https://github.com/zsh-users/$plugin.git $XDG_DATA_HOME/zsh/$plugin"
@@ -50,6 +52,7 @@ done
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt inc_append_history
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export HISTSIZE=100000
 # needed for vimtex-neovim
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
