@@ -5,7 +5,7 @@ return {
 		-- Your options go here
 		-- name = "venv",
 		-- auto_refresh = false
-		pyenv_path = vim.env.PYENV_ROOT .. "/versions",
+		pyenv_path = vim.env.PYENV_ROOT and (vim.env.PYENV_ROOT .. "/versions") or nil,
 	},
 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 	branch = "regexp", -- This is the regexp branch, use this for the new version
