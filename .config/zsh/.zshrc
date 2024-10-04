@@ -35,6 +35,12 @@ if [[ -f $HOME/.pyenv ]]; then
 fi
 
 # tmux
+export TMUX_PLUGIN_MANAGER_PATH=$XDG_DATA_HOME/tmux/plugins
+# Create tmux dir for its data (plugins)
+if [[ ! -d $XDG_DATA_HOME/tmux/plugins ]]; then
+  mkdir -p "$XDG_DATA_HOME"/tmux/plugins
+fi
+
 if [[ -n $TMUX ]]; then
   export TERM="tmux-256color"
 fi
