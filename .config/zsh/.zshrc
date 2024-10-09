@@ -24,6 +24,10 @@ fi
 # kubectl
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
+  if command -v kubecolor >/dev/null 2>&1; then
+    # Make "kubecolor" borrow the same completion logic as "kubectl"
+    compdef kubecolor=kubectl
+  fi
 fi
 
 # pyenv
@@ -92,6 +96,6 @@ alias gp="git push"
 alias p3="python3"
 alias h='history -t "%d.%m.%y-%H:%M:%S"'
 alias st='speedtest-cli'
-alias k='kubectl'
+alias k='kubecolor'
 
 eval "$(starship init zsh)"
