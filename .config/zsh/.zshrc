@@ -14,11 +14,26 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 # command-specific setups
 
+# aws
+if command -v aws >/dev/null 2>&1; then
+  autoload bashcompinit && bashcompinit
+  complete -C "$(which aws_completer)" aws
+fi
+
+# direnv
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
 # fzf
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 else
   echo "fzf not found"
+fi
+
+if command -v helm >/dev/null 2>&1; then
+  source <(helm completion zsh)
 fi
 
 # kubectl
@@ -99,3 +114,4 @@ alias st='speedtest-cli'
 alias k='kubecolor'
 
 eval "$(starship init zsh)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
