@@ -24,7 +24,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Misc mappings
-vim.keymap.set("n", "<leader>sx", "<cmd>30Lexplore<CR>", { desc = "Open file explorer (netrw)" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Write to file" })
 vim.keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<CR>", { desc = "Set vim's directory to current file's directory" })
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })

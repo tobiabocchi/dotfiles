@@ -1,3 +1,7 @@
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Search
 -- vim.opt.hlsearch = false -- don't highlight search pattern
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -53,8 +57,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 
 --vim.opt.completeopt = "menu,menuone,preview"
--- netrw
-vim.g.netrw_banner = 0
 
 local pyenv_root = vim.fn.getenv("PYENV_ROOT")
 if pyenv_root ~= vim.NIL and pyenv_root ~= "" then
