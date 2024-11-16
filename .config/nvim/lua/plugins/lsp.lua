@@ -125,6 +125,20 @@ return {
 				-- TODO: consider setting fqbn based on project's location
 			},
 		})
+		lspconfig.yamlls.setup({
+			settings = {
+				yaml = {
+					-- manually select schemas
+					schemas = {
+						kubernetes = "*.yaml",
+						["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28-standalone-strict/all.json"] = "/*.k8s.yaml",
+						["https://json.schemastore.org/kustomization.json"] = "kustomization.{yml,yaml}",
+						["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose*.{yml,yaml}",
+						["https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json"] = "argocd-application.yaml",
+					},
+				},
+			},
+		})
 		lspconfig.lua_ls.setup({
 			-- cmd = {...},
 			-- filetypes { ...},

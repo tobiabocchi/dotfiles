@@ -1,0 +1,50 @@
+-- return {
+-- 	"someone-stole-my-name/yaml-companion.nvim",
+-- 	requires = {
+-- 		{ "neovim/nvim-lspconfig" },
+-- 		{ "nvim-lua/plenary.nvim" },
+-- 		{ "nvim-telescope/telescope.nvim" },
+-- 	},
+-- 	ft = { "yaml" },
+-- 	opts = {
+-- 		builtin_matchers = {
+-- 			kubernetes = { enabled = true },
+-- 		},
+-- 	},
+-- 	config = function()
+-- 		require("telescope").load_extension("yaml_schema")
+-- 	end,
+-- }
+-- return {
+-- 	{
+-- 		"someone-stole-my-name/yaml-companion.nvim",
+-- 		ft = { "yaml" },
+-- 		opts = {
+-- 			builtin_matchers = {
+-- 				kubernetes = { enabled = true },
+-- 			},
+-- 			schemas = {
+-- 				{
+-- 					name = "Kubernetes 1.27.12",
+-- 					uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.12-standalone-strict/all.json",
+-- 				},
+-- 				{
+-- 					name = "Kubernetes 1.26.14",
+-- 					uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.14-standalone-strict/all.json",
+-- 				},
+-- 			},
+-- 		},
+-- 		dependencies = {
+-- 			{ "neovim/nvim-lspconfig" },
+-- 			{ "nvim-lua/plenary.nvim" },
+-- 			{ "nvim-telescope/telescope.nvim" },
+-- 		},
+--
+-- 		config = function(_, opts)
+-- 			local cfg = require("yaml-companion").setup(opts)
+-- 			require("lspconfig")["yamlls"].setup(cfg)
+-- 			require("telescope").load_extension("yaml_schema")
+-- 		end,
+-- 	},
+-- }
+return {}
