@@ -23,6 +23,9 @@ fi
 # direnv
 if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
+  if [[ ! -d "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ]]; then
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+  fi
 fi
 
 # fzf
@@ -118,5 +121,3 @@ alias p3="python3"
 alias h='history -t "%d.%m.%y-%H:%M:%S"'
 alias st='speedtest-cli'
 alias k='kubecolor'
-
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
