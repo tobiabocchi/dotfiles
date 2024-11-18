@@ -53,6 +53,12 @@ if [[ -f $HOME/.pyenv ]]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# starship, install if missing
+if ! command -v starship >/dev/null 2>&1; then
+  curl -sS https://starship.rs/install.sh | sh
+fi
+eval "$(starship init zsh)"
+
 # tmux
 export TMUX_PLUGIN_MANAGER_PATH=$XDG_DATA_HOME/tmux/plugins
 # Create tmux dir for its data (plugins)
@@ -113,5 +119,4 @@ alias h='history -t "%d.%m.%y-%H:%M:%S"'
 alias st='speedtest-cli'
 alias k='kubecolor'
 
-eval "$(starship init zsh)"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
