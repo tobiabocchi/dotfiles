@@ -1,7 +1,9 @@
 # vim: set ft=sh :
 
 # homebrew env vars
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if command -v brew >/dev/null 2>&1; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
