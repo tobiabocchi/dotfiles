@@ -68,7 +68,7 @@ fi
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 for plugin in $plugins; do
   if [[ ! -d $XDG_DATA_HOME/zsh/$plugin ]]; then
-    git clone "https://github.com/zsh-users/$plugin.git $XDG_DATA_HOME/zsh/$plugin"
+    git clone "https://github.com/zsh-users/${plugin}.git" "$XDG_DATA_HOME/zsh/$plugin"
   fi
   source "$XDG_DATA_HOME/zsh/$plugin/$plugin.zsh"
 done
