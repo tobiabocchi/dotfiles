@@ -75,6 +75,13 @@ if [[ -n $TMUX ]]; then
   export TERM="tmux-256color"
 fi
 
+# zoxide
+if command -v zoxide >/dev/null 2>&1; then
+  export _ZO_DATA_DIR=$XDG_DATA_HOME
+  eval "$(zoxide init zsh)"
+  alias cd=z
+fi
+
 # zsh plugins
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 for plugin in $plugins; do
