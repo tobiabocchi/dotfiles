@@ -60,7 +60,9 @@ fi
 if ! command -v starship >/dev/null 2>&1; then
   curl -sS https://starship.rs/install.sh | sh
 fi
-eval "$(starship init zsh)"
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
 
 # tmux
 export TMUX_PLUGIN_MANAGER_PATH=$XDG_DATA_HOME/tmux/plugins
