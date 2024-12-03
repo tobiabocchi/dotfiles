@@ -35,8 +35,14 @@ else
   echo "fzf not found"
 fi
 
+# helm
 if command -v helm >/dev/null 2>&1; then
   source <(helm completion zsh)
+fi
+
+# hugo
+if command -v hugo >/dev/null 2>&1; then
+  source <(hugo completion zsh)
 fi
 
 # kubectl
@@ -62,6 +68,11 @@ if ! command -v starship >/dev/null 2>&1; then
 fi
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
+fi
+
+# stern
+if command -v stern >/dev/null 2>&1; then
+  source <(stern --completion zsh)
 fi
 
 # tmux
