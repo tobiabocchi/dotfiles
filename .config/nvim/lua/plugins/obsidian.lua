@@ -19,6 +19,7 @@ return {
 		{ "<Leader>oq", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [Q]uick Switch" },
 		{ "<Leader>on", "<cmd>ObsidianNew<cr>", desc = "[O]bsidian [N]ew note" },
 		{ "<Leader>od", "<cmd>ObsidianToday<cr>", desc = "[O]bsidian [D]aily note" },
+		{ "<Leader>oy", "<cmd>ObsidianYesterday<cr>", desc = "[O]bsidian [Y]esterday note" },
 		{ "<Leader>ot", "<cmd>ObsidianTOC<cr>", desc = "[O]bsidian [T]oc" },
 		{ "<Leader>l", "<cmd>ObsidianLinkNew<cr>", desc = "Create new [L]ink with visual selection", mode = "v" },
 	},
