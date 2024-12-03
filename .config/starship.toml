@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
-
+command_timeout = 1000
 palette = 'catppuccin_mocha'
 
 [[battery.display]]
@@ -36,6 +36,9 @@ symbol = " "
 
 [golang]
 symbol = " "
+
+[gcloud]
+detect_env_vars = ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 [hostname]
 ssh_symbol = " "
