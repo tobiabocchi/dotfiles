@@ -12,46 +12,61 @@ zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")'
 
+# Helper function to check if a command exists
+cmd_exists() { whence "$1" >/dev/null 2>&1; }
+
+# Helper function to check if completion already exists
+completion_exists() {
+  whence -w "_$1" >/dev/null 2>&1 || grep -q "_$1" "${XDG_DATA_HOME}/zsh/zcompdump" 2>/dev/null
+}
+
 # command-specific setups
 
 # aws
-if command -v aws >/dev/null 2>&1; then
+if cmd_exists aws; then
   autoload bashcompinit && bashcompinit
   complete -C "$(which aws_completer)" aws
 fi
 
-# direnv
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-  if [[ ! -d "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ]]; then
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-  fi
-fi
-
 # fzf
-if command -v fzf >/dev/null 2>&1; then
-  source <(fzf --zsh)
-else
-  echo "fzf not found"
+if cmd_exists fzf && ! completion_exists fzf; then
+  eval "$(fzf --zsh)"
 fi
 
 # helm
-if command -v helm >/dev/null 2>&1; then
-  source <(helm completion zsh)
+if cmd_exists helm && ! completion_exists helm; then
+  eval "$(helm completion zsh)"
 fi
 
 # hugo
-if command -v hugo >/dev/null 2>&1; then
-  source <(hugo completion zsh)
+if cmd_exists hugo && ! completion_exists hugo; then
+  eval "$(hugo completion zsh)"
 fi
 
 # kubectl
-if command -v kubectl >/dev/null 2>&1; then
-  source <(kubectl completion zsh)
-  if command -v kubecolor >/dev/null 2>&1; then
+if cmd_exists kubectl; then
+  if ! completion_exists kubectl; then
+    eval "$(kubectl completion zsh)"
+  fi
+  if cmd_exists kubecolor; then
     # Make "kubecolor" borrow the same completion logic as "kubectl"
     compdef kubecolor=kubectl
   fi
+fi
+
+# kubectl-krew
+if cmd_exists kubctl-krew; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
+# mise
+if cmd_exists mise && ! completion_exists mise; then
+  eval "$(mise activate zsh)"
+fi
+
+# pluto
+if cmd_exists pluto && ! completion_exists pluto; then
+  eval "$(pluto completion zsh --no-footer)"
 fi
 
 # pyenv
@@ -63,16 +78,17 @@ if [[ -f $HOME/.pyenv ]]; then
 fi
 
 # starship, install if missing
-if ! command -v starship >/dev/null 2>&1; then
+if ! cmd_exists starship; then
   curl -sS https://starship.rs/install.sh | sh
 fi
-if command -v starship >/dev/null 2>&1; then
+
+if cmd_exists starship; then
   eval "$(starship init zsh)"
 fi
 
 # stern
-if command -v stern >/dev/null 2>&1; then
-  source <(stern --completion zsh)
+if cmd_exists stern && ! completion_exists stern; then
+  eval "$(stern --completion zsh)"
 fi
 
 # tmux
@@ -87,7 +103,7 @@ if [[ -n $TMUX ]]; then
 fi
 
 # zoxide
-if command -v zoxide >/dev/null 2>&1; then
+if cmd_exists zoxide; then
   export _ZO_DATA_DIR=$XDG_DATA_HOME
   eval "$(zoxide init zsh)"
   alias cd=z
