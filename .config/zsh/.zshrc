@@ -118,8 +118,8 @@ bindkey -v # Use vim keybindings
 bindkey "^y" autosuggest-accept
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'i' history-substring-search-up
+bindkey -M vicmd 'e' history-substring-search-down
 
 # aliases
 alias v="nvim"
