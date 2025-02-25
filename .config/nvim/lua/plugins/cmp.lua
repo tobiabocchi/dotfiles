@@ -41,7 +41,6 @@ return {
 				--  This will auto-import if your LSP supports it.
 				--  This will expand snippets if the LSP sent a snippet.
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
 				--  completions whenever it has completion options available.
@@ -77,9 +76,17 @@ return {
 			},
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
+				expandable_indicator = true,
+				fields = { "abbr", "kind", "menu" },
 				format = require("lspkind").cmp_format({
-					mode = "symbol_text", -- show only symbol annotations
-					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+					mode = "symbol_text",
+					maxwidth = {
+						-- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+						-- can also be a function to dynamically calculate max width such as
+						-- menu = function() return math.floor(0.45 * vim.o.columns) end,
+						menu = 50, -- leading text (labelDetails)
+						abbr = 50, -- actual suggestion item
+					},
 					ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 					show_labelDetails = true,
 					symbol_map = { Copilot = "" },
