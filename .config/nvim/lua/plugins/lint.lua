@@ -5,6 +5,7 @@ return {
 		local lint = require("lint")
 		-- set linters per filetype
 		lint.linters_by_ft = {
+			ansible = { "ansible_lint" },
 			bash = { "shellcheck" },
 			cpp = { "cppcheck" },
 			javascript = { "standardjs" },
