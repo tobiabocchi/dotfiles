@@ -109,14 +109,25 @@ if cmd_exists zoxide; then
   alias cd=z
 fi
 
-# zsh plugins
-plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
-for plugin in $plugins; do
-  if [[ ! -d $XDG_DATA_HOME/zsh/$plugin ]]; then
+# zsh-users plugins
+plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search zsh-completions)
+for plugin in "${plugins[@]}"; do
+  if [[ ! -d "$XDG_DATA_HOME/zsh/$plugin" ]]; then
     git clone "https://github.com/zsh-users/${plugin}.git" "$XDG_DATA_HOME/zsh/$plugin"
+  fi
+  # skip zsh-completions, it's already loaded by compinit
+  if [[ $plugin == "zsh-completions" ]]; then
+    fpath=("$XDG_DATA_HOME/zsh/$plugin/src" $fpath)
+    continue
   fi
   source "$XDG_DATA_HOME/zsh/$plugin/$plugin.zsh"
 done
+
+# other plugins
+# if [[ ! -d $XDG_DATA_HOME/zsh/zsh-vi-mode ]]; then
+#   git clone "https://github.com/jeffreytse/zsh-vi-mode.git" "$XDG_DATA_HOME/zsh/zsh-vi-mode"
+# fi
+# source "$XDG_DATA_HOME/zsh/zsh-vi-mode/zsh-vi-mode.zsh"
 
 # history
 setopt hist_ignore_dups
@@ -138,22 +149,26 @@ bindkey -M vicmd 'i' history-substring-search-up
 bindkey -M vicmd 'e' history-substring-search-down
 
 # aliases
-alias v="nvim"
-alias ls="ls -Gh"
-alias ll="ls -l"
+alias ...="cd ../.."
+alias ..="cd .."
+
+alias g="git"
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit"
+alias gd="git diff"
+alias gl="git log"
+alias gp="git push"
+alias gs="git status"
+
+alias h='history -t "%d.%m.%y-%H:%M:%S"'
+alias k='kubecolor'
+
 alias l="ls -l"
 alias la="ls -a"
-alias ..="cd .."
-alias ...="cd ../.."
-alias g="git"
-alias gs="git status"
-alias gl="git log"
-alias gd="git diff"
-alias gc="git commit"
-alias gb="git branch"
-alias ga="git add"
-alias gp="git push"
+alias ll="ls -l"
+alias ls="ls -Gh"
+
 alias p3="python3"
-alias h='history -t "%d.%m.%y-%H:%M:%S"'
 alias st='speedtest-cli'
-alias k='kubecolor'
+alias v="nvim"
