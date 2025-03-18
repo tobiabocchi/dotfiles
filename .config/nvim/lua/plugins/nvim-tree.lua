@@ -6,7 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = {
-		{ "<Leader>t", "<cmd>NvimTreeToggle<cr>", desc = "Open File Tree" },
+		{ "<Leader>t", "<cmd>NvimTreeToggle<cr>", desc = "Toggle File Tree" },
 	},
 	opts = {},
 }
