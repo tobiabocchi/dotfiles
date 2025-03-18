@@ -48,6 +48,7 @@ return {
 			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
 			template = "daily.md",
 		},
+		ui = { enable = false },
 		-- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
 		-- way then set 'mappings = {}'.
 		mappings = {

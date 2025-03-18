@@ -72,6 +72,7 @@ return {
 				{ name = "copilot" },
 				{ name = "cmdline" },
 				{ name = "vimtex" },
+				{ name = "render-markdown" },
 				{ name = "nvim_lsp_signature_help" },
 			},
 			-- configure lspkind for vs-code like pictograms in completion menu
