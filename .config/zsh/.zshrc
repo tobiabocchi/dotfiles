@@ -5,13 +5,6 @@ if [[ ! -d $XDG_DATA_HOME/zsh ]]; then
   mkdir -p "$XDG_DATA_HOME"/zsh
 fi
 
-# completion
-autoload -U compinit
-compinit -d "$XDG_DATA_HOME/zsh/zcompdump"
-zstyle ':completion:*' completer _extensions _complete _approximate
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")'
-
 # Helper function to check if a command exists
 cmd_exists() { whence "$1" >/dev/null 2>&1; }
 
@@ -19,6 +12,17 @@ cmd_exists() { whence "$1" >/dev/null 2>&1; }
 completion_exists() {
   whence -w "_$1" >/dev/null 2>&1 || grep -q "_$1" "${XDG_DATA_HOME}/zsh/zcompdump" 2>/dev/null
 }
+
+if cmd_exists brew; then
+  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+fi
+
+# completion
+autoload -U compinit
+compinit -d "$XDG_DATA_HOME/zsh/zcompdump"
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")'
 
 # command-specific setups
 
@@ -134,7 +138,8 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt inc_append_history
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
-export HISTSIZE=100000
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 # needed for vimtex-neovim
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 # pretty man pages
