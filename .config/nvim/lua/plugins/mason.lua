@@ -29,10 +29,12 @@ return {
 				"arduino-language-server", -- [LSP] arduino
 				"bash-language-server", -- [LSP] bash
 				"clangd", -- [LSP] c c++
+				"gopls", -- [LSP] go
 				"html-lsp", -- [LSP] html
 				"lua-language-server", -- [LSP] lua
 				"pyright", -- [LSP] python
 				"rust-analyzer", -- [LSP] rust
+				"terraform-ls", -- [LSP] terraform
 				"vale-ls", -- [LSP] markdown
 				"yaml-language-server", -- [LSP] YAML
 				-- Debuggers
