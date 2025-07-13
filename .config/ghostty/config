@@ -1,2 +1,5 @@
 theme = catppuccin-mocha
 background-opacity = 0.95
+cursor-invert-fg-bg = false
+# cursor-color = #f5e0dc
+cursor-text = #11111b
