@@ -16,7 +16,7 @@ return {
 		require("neodev").setup({})
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
-		mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
 			-- a dedicated handler.
