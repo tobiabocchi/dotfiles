@@ -64,7 +64,10 @@ if cmd_exists kubctl-krew; then
 fi
 
 # mise
-if cmd_exists mise && ! completion_exists mise; then
+if cmd_exists mise; then
+  if ! completion_exists mise; then
+    eval "$(mise completion zsh)"
+  fi
   eval "$(mise activate zsh)"
 fi
 

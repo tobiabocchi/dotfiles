@@ -116,12 +116,10 @@ return {
 				"-clangd",
 				"/Users/tobiabocchi/.local/share/nvim/mason/bin/clangd",
 				"-fqbn",
-				"esp32:esp32:esp32", -- "arduino:avr:uno",
-				"-log",
-				"-logpath",
-				"/tmp/ardlsp",
-				--"esp32:esp32:esp32",
-				--"-fqbn", "arduino:avr:nano",
+				"arduino:avr:uno", -- "esp32:esp32:esp32",
+				-- "-log",
+				-- "-logpath",
+				-- "/tmp/ardlsp",
 				-- TODO: consider setting fqbn based on project's location
 			},
 		})

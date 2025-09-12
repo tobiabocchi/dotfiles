@@ -16,16 +16,17 @@ return {
 		-- Define your formatters, for info use autocomplete for :setfiletype
 		formatters_by_ft = {
 			bash = { "shfmt" },
-			sh = { "shfmt" },
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 			css = { "prettierd" },
+			go = { "gopls" },
 			html = { "stylua" },
 			javascript = { "standardjs" },
+			json = { "prettierd" },
 			lua = { "stylua" },
 			markdown = { "prettierd" },
 			python = { "isort", "black" },
-			c = { "clang-format" },
-			cpp = { "clang-format" },
-			json = { "prettierd" },
+			sh = { "shfmt" },
 		},
 		-- Set up format-on-save
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
