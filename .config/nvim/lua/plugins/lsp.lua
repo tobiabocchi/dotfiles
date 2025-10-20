@@ -40,7 +40,7 @@ return {
 
 				-- Jump to the definition of the word under your cursor.
 				--  To jump back, press <C-T>.
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+				-- map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header
