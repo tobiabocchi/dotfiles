@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = catppuccin-mocha.conf
 background-opacity = 0.95
 cursor-invert-fg-bg = false
 # cursor-color = #f5e0dc
