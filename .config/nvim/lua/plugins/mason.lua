@@ -1,5 +1,5 @@
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	event = { "CmdlineEnter" },
 	dependencies = {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -29,6 +29,7 @@ return {
 				"arduino-language-server", -- [LSP] arduino
 				"bash-language-server", -- [LSP] bash
 				"clangd", -- [LSP] c c++
+				"copilot-language-server", -- [LSP] Copilot
 				"gopls", -- [LSP] go
 				"html-lsp", -- [LSP] html
 				"lua-language-server", -- [LSP] lua
