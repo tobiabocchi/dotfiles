@@ -14,7 +14,7 @@ return {
 			python = { "pylint" },
 			yaml = { "yamllint" },
 		}
-		-- Addiional linter config
+		-- Additional linter config
 		lint.linters.yamllint.args = {
 			'-d "rules: {indentation: {indent-sequences: consistent}}"',
 		}
