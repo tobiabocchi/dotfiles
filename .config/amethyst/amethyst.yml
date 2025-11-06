@@ -22,8 +22,7 @@ layouts:
   # - two-pane
   # - middle-wide
   # - 3column-left
-  - 3column-middle
-  # - middle-wide # The legacy name of "3column-middle"
+  - middle-wide # The legacy name of "3column-middle"
   # - 3column-right
   # - 4column-left
   # - 4column-right
@@ -111,12 +110,12 @@ expand-main:
 # Focus the next window in the list going counter-clockwise.
 focus-ccw:
   mod: mod1
-  key: e
+  key: i
 
 # Focus the next window in the list going clockwise.
 focus-cw:
   mod: mod1
-  key: i
+  key: e
 
 # Focus the main window in the list.
 # focus-main:
@@ -124,34 +123,34 @@ focus-cw:
 #   key: m
 
 # Focus the next screen in the list going counter-clockwise.
-# focus-screen-ccw:
-#   mod: mod1
-#   key: p
+focus-screen-ccw:
+  mod: mod1
+  key: j
 
 # Focus the next screen in the list going clockwise.
-# focus-screen-cw:
-#   mod: mod1
-#   key: n
+focus-screen-cw:
+  mod: mod1
+  key: k
 
 # Move the currently focused window onto the next screen in the list going counter-clockwise.
-# swap-screen-ccw:
-#   mod: mod2
-#   key: h
+swap-screen-ccw:
+  mod: mod2
+  key: j
 
 # Move the currently focused window onto the next screen in the list going clockwise.
-# swap-screen-cw:
-#   mod: mod2
-#   key: l
+swap-screen-cw:
+  mod: mod2
+  key: k
 
 # Swap the position of the currently focused window with the next window in the list going counter-clockwise.
 swap-ccw:
   mod: mod2
-  key: e
+  key: i
 
 # Swap the position of the currently focused window with the next window in the list going clockwise.
 swap-cw:
   mod: mod2
-  key: i
+  key: e
 
 # Swap the position of the currently focused window with the main window in the list.
 swap-main:
@@ -209,9 +208,9 @@ toggle-float:
   key: f
 
 # Display the layout HUD with the current layout on each screen.
-# display-current-layout:
-#   mod: mod1
-#   key: i
+display-current-layout:
+  mod: mod1
+  key: s
 
 # Turn on or off tiling entirely.
 # toggle-tiling:
