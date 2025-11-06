@@ -46,6 +46,9 @@ ssh_symbol = " "
 [java]
 symbol = " "
 
+[kubernetes]
+disabled = false
+
 [lua]
 symbol = " "
 

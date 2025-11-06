@@ -8,5 +8,9 @@ return {
 	keys = {
 		{ "<Leader>t", "<cmd>NvimTreeToggle<cr>", desc = "Toggle File Tree" },
 	},
-	opts = {},
+	opts = {
+		view = {
+			width = 50,
+		},
+	},
 }
